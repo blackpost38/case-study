@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Client</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <script>
+
+      var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzFkNzczY2U2ZjIyNjRlN2IwMjE0ZTgiLCJlbWFpbCI6InRlc3QiLCJjcmVhdGVkRGF0ZSI6IjIwMTYtMDQtMjVUMDE6NDc6NDAuMDIzWiIsImlhdCI6MTQ2MTcyMTMzMywiZXhwIjoxNDYxOTgwNTMzfQ.s3DNURG-3a_fa2iw1JrWTlyfOgyV1jUJQNL7TfrkBpU";
+      
+      var socket = io.connect('http://localhost:4000');
+      socket.emit('authenticate', {token: token});
+      socket.on('test', function(data){
+        console.log(`
+        email: ${data.email}
+        craeted date: ${data.createdDate} 
+        _id: ${data._id}
+        `);
+      });
+    </script>
+  </body>
+</html>
